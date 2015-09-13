@@ -3,7 +3,7 @@
 # is not specified
 default_net_partition_name = <%= scope.lookupvar('nuage::net_partition_name') %> 
 # Hostname or IP address and port for connection to VSD server
-server = <%= scope.lookupvar('nuage::vsd_ip) %>
+server = <%= scope.lookupvar('nuage::vsd_ip') %>
 # VSD Username and password for OpenStack plugin connection
 # User must belong to CSP Root group and CSP CMS group
 serverauth = <%= scope.lookupvar('nuage::vsd_username') %>:<%= scope.lookupvar('nuage::vsd_password') %>
