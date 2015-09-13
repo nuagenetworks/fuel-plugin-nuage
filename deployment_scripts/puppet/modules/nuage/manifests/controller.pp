@@ -13,8 +13,8 @@ class nuage::controller {
   }
 
   neutron_config {
-    'DEFAULT/core_plugin':             value => 'neutron.plugins.nuage.plugin.NuagePlugin';
-    'DEFAULT/service_plugins':         value => '';
+    'DEFAULT/core_plugin': value => 'neutron.plugins.nuage.plugin.NuagePlugin';
+    'DEFAULT/service_plugins': value => '';
   } ->
   file {'/etc/neutron/plugins/nuage/plugin.ini':
     content => template('nuage/plugin.ini.erb'),
