@@ -24,4 +24,4 @@ serverauth = <%= scope.lookupvar('nuage::vsd_username') %>:<%= scope.lookupvar('
 organization = <%= scope.lookupvar('nuage::vsd_organization) %> 
 auth_resource = /me
 serverssl = True
-base_uri = /nuage/api/v3_0
+base_uri = /nuage/api/<%= scope.lookupvar('nuage::base_uri_version) %>

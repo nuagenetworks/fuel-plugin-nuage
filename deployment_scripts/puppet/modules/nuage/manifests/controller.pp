@@ -25,14 +25,4 @@ class nuage::controller {
     'DEFAULT/core_plugin':             value => 'neutron.plugins.nuage.plugin.NuagePlugin';
     'DEFAULT/service_plugins':         value => '';
   } ->
-  neutron_config_nuage {
-    'RESTPROXY/default_net_partition_name': value => $nuage::net_partition_name;
-    'RESTPROXY/server':                     value => $nuage::vsd_ip;
-    'RESTPROXY/serverauth':                 value => "$nuage::vsd_username:$nuage::vsd_password";
-    'RESTPROXY/organization':               value => $nuage::vsd_organization;
-    'RESTPROXY/auth_resource':              value => '/me';
-    'RESTPROXY/serverssl':                  value => 'True';
-    'RESTPROXY/base_uri':                   value => "/nuage/api/$nuage::base_uri_version";  
-  } 
-  
 }
