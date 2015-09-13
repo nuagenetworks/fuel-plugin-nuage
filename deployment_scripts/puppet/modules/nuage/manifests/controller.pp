@@ -12,6 +12,10 @@ class nuage::controller {
     ensure => $package_ensure,
   }
 
+  neutron_config {
+    'DEFAULT/core_plugin':             value => 'neutron.plugins.nuage.plugin.NuagePlugin';
+    'DEFAULT/service_plugins':         value => '';
+  } ->
   file {'/etc/neutron/plugins/nuage/plugin.ini':
     content => template('nuage/plugin.ini.erb'),
     require => Package['nuage-neutron'],
@@ -21,8 +25,11 @@ class nuage::controller {
     target  => '/etc/neutron/plugins/nuage/plugin.ini',
   }
 
-  neutron_config {
-    'DEFAULT/core_plugin':             value => 'neutron.plugins.nuage.plugin.NuagePlugin';
-    'DEFAULT/service_plugins':         value => '';
+  service { 'neutron-server':
+    ensure      => running,
+    enable      => true,
+    require     => [Package['nuage-neutron'],],
+    subscribe   => [File['/etc/neutron/plugins/nuage/plugin.ini'],
+                    File['/etc/neutron/plugin.ini']],
   }
 }
