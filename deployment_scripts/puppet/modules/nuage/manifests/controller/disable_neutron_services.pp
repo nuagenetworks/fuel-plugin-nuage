@@ -1,7 +1,8 @@
 define disable_neutron_service {
-  service {"disabling $name":
+  service {'$name':
       ensure => "stopped"
   }
 }
 
-disable_neutron_service { ['openstack-neutron-dhcp-agent', 'openstack-neutron-l3-agent', 'openstack-neutron-metadata-agent', 'openvswitch-vswitch'] :}
+disable_neutron_service { ['neutron-dhcp-agent', 'neutron-l3-agent', 'neutron-metadata-agent',
+    'neutron-plugin-openvswitch-agent', 'openvswitch-switch'] :}
