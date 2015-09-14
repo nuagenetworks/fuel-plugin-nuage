@@ -1,7 +1,10 @@
-define disable_neutron_service {
-  service {"disabling $name":
-      ensure => "stopped"
-  }
-}
+class nuage::controller::disable_neutron_services { 
 
-disable_neutron_service { ['openstack-neutron-dhcp-agent', 'openstack-neutron-l3-agent', 'openstack-neutron-metadata-agent', 'openvswitch-vswitch'] :}
+  define disable_neutron_service {
+    service {"$name":
+      ensure => "stopped"
+    } 
+  }
+
+  disable_neutron_service { ['openstack-neutron-dhcp-agent', 'openstack-neutron-l3-agent', 'openstack-neutron-metadata-agent', 'openvswitch-vswitch'] :}
+}
