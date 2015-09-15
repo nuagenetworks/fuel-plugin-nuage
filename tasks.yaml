@@ -2,8 +2,16 @@
 # here you can also specify several roles, for example
 # ['cinder', 'compute'] will be applied only on
 # cinder and compute nodes
+
 - role: ['primary-controller','controller']
   stage: post_deployment/6000
+  type: shell
+  parameters:
+    cmd: ./disable_pacemaker_neutron_services.sh
+    timeout: 720
+
+- role: ['primary-controller','controller']
+  stage: post_deployment/6001
   type: puppet
   parameters:
     puppet_manifest: puppet/manifests/site-controller-post-1.pp
@@ -11,7 +19,7 @@
     timeout: 720
 
 - role: ['primary-controller','controller']
-  stage: post_deployment/6001
+  stage: post_deployment/6002
   type: puppet
   parameters:
     puppet_manifest: puppet/manifests/site-controller-post-2.pp
@@ -19,7 +27,7 @@
     timeout: 720
 
 - role: ['primary-controller','controller']
-  stage: post_deployment/6002
+  stage: post_deployment/6003
   type: puppet
   parameters:
     puppet_manifest: puppet/manifests/site-controller-post-3.pp
@@ -27,7 +35,7 @@
     timeout: 720
 
 - role: ['primary-controller','controller']
-  stage: post_deployment/6003
+  stage: post_deployment/6004
   type: puppet
   parameters:
     puppet_manifest: puppet/manifests/site-controller-post-4.pp
@@ -35,7 +43,7 @@
     timeout: 720
 
 - role: ['primary-controller','controller']
-  stage: post_deployment/6004
+  stage: post_deployment/6005
   type: puppet
   parameters:
     puppet_manifest: puppet/manifests/site-controller-post-5.pp
@@ -43,7 +51,7 @@
     timeout: 720
 
 - role: ['primary-controller','controller']
-  stage: post_deployment/6008
+  stage: post_deployment/6009
   type: puppet
   parameters:
     puppet_manifest: puppet/manifests/site-controller-post-6.pp
@@ -51,7 +59,7 @@
     timeout: 720
 
 - role: ['primary-controller','controller','compute']
-  stage: post_deployment/6007
+  stage: post_deployment/6008
   type: puppet
   parameters:
     puppet_manifest: puppet/manifests/site-controller-compute-post.pp
@@ -59,7 +67,7 @@
     timeout: 720
 
 - role: ['compute']
-  stage: post_deployment/6005
+  stage: post_deployment/6006
   type: puppet
   parameters:
     puppet_manifest: puppet/manifests/site-compute-post-1.pp
@@ -67,7 +75,7 @@
     timeout: 720
 
 - role: ['compute']
-  stage: post_deployment/6006
+  stage: post_deployment/6007
   type: puppet
   parameters:
     puppet_manifest: puppet/manifests/site-compute-post-2.pp
@@ -75,9 +83,25 @@
     timeout: 720
 
 - role: ['compute']
-  stage: post_deployment/6009
+  stage: post_deployment/6010
   type: puppet
   parameters:
     puppet_manifest: puppet/manifests/site-compute-post-3.pp
     puppet_modules: puppet/modules:/etc/puppet/modules
     timeout: 720
+
+- role: ['compute']
+  stage: post_deployment/6011
+  type: shell
+  parameters:
+    cmd: ./open_vnc_ports.sh
+    timeout: 720
+  fail_on_error: false
+
+- role: ['compute']
+  stage: post_deployment/6012
+  type: shell
+  parameters:
+    cmd: ./open_vxlan_ports.sh
+    timeout: 720
+  fail_on_error: false
