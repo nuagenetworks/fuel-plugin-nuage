@@ -1,4 +1,4 @@
-class nuage::compute::install_nuage_vrs_purge_ovs {
+class nuage::compute::install_nuage_vrs {
 
   package{ 'nuage-openvswitch-switch':
     ensure => 'present',
