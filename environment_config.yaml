@@ -1,7 +1,49 @@
 attributes:
-  fuel-plugin-nuage_text:
-    value: 'Set default value'
-    label: 'Text field'
-    description: 'Description for text field'
-    weight: 25
+  nuage_net_partition_name:
+    value: 'FUEL'
+    label: 'Nuage Net Partition name'
+    description: 'Nuage Net Partition name for VSD'
+    weight: 20
+    type: "text"
+  nuage_vsd_ip:
+    value: '10.20.0.7:8443'
+    label: 'VSD IP address'
+    description: 'VSD Management IP address'
+    weight: 30
+    type: "text"
+  nuage_vsd_username:
+    value: 'csproot'
+    label: 'VSD username'
+    description: 'VSD user'
+    weight: 40
+    type: "text"
+  nuage_vsd_password:
+    value: 'csproot'
+    label: 'VSD password'
+    description: 'VSD password'
+    weight: 50
+    type: "text"
+  nuage_vsd_organization:
+    value: 'csp'
+    label: 'VSD organization name'
+    description: 'VSD organization'
+    weight: 60
+    type: "text"
+  nuage_base_uri_version:
+    value: 'v3_0'
+    label: 'Nuage base uri version'
+    description: 'Nuage base uri version number'
+    weight: 70
+    type: "text"
+  nuage_active_vsc_ip:
+    value: '10.20.0.200'
+    label: 'Active VSC IP address'
+    description: 'Active VSC IP address'
+    weight: 80
+    type: "text"
+  nuage_backup_vsc_ip:
+    value: ''
+    label: 'Backup VSC IP address'
+    description: 'Backup VSC IP address'
+    weight: 90
     type: "text"

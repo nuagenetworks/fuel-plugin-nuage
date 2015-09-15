@@ -1,11 +1,14 @@
-package{ 'nuage-neutron':
-  ensure => $package_ensure,
-}
+class nuage::controller::install_nuage_neutron {
 
-package{ 'nuage-openstack-neutronclient':
-  ensure => $package_ensure,
-}
+  package{ 'nuage-neutron':
+    ensure => present,
+  }
 
-package{ 'python-nuagenetlib':
-  ensure => $package_ensure,
+  package{ 'nuage-openstack-neutronclient':
+    ensure => present,
+  }
+
+  package{ 'python-nuagenetlib':
+    ensure => present,
+  }
 }

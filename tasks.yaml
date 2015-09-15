@@ -2,22 +2,82 @@
 # here you can also specify several roles, for example
 # ['cinder', 'compute'] will be applied only on
 # cinder and compute nodes
-- role: ['controller']
-  stage: post_deployment
-  type: shell
+- role: ['primary-controller','controller']
+  stage: post_deployment/6000
+  type: puppet
   parameters:
-    cmd: ./deploy.sh
-    timeout: 42
-# Task is applied for all roles
-- role: '*'
-  stage: pre_deployment
-  type: shell
+    puppet_manifest: puppet/manifests/site-controller-post-1.pp
+    puppet_modules: puppet/modules:/etc/puppet/modules
+    timeout: 720
+
+- role: ['primary-controller','controller']
+  stage: post_deployment/6001
+  type: puppet
   parameters:
-    cmd: echo all > /tmp/plugin.all
-    timeout: 42
-# "reboot" task reboots the nodes and waits until they get back online
-# - role: '*'
-#   stage: pre_deployment
-#   type: reboot
-#   parameters:
-#     timeout: 600
+    puppet_manifest: puppet/manifests/site-controller-post-2.pp
+    puppet_modules: puppet/modules:/etc/puppet/modules
+    timeout: 720
+
+- role: ['primary-controller','controller']
+  stage: post_deployment/6002
+  type: puppet
+  parameters:
+    puppet_manifest: puppet/manifests/site-controller-post-3.pp
+    puppet_modules: puppet/modules:/etc/puppet/modules
+    timeout: 720
+
+- role: ['primary-controller','controller']
+  stage: post_deployment/6003
+  type: puppet
+  parameters:
+    puppet_manifest: puppet/manifests/site-controller-post-4.pp
+    puppet_modules: puppet/modules:/etc/puppet/modules
+    timeout: 720
+
+- role: ['primary-controller','controller']
+  stage: post_deployment/6004
+  type: puppet
+  parameters:
+    puppet_manifest: puppet/manifests/site-controller-post-5.pp
+    puppet_modules: puppet/modules:/etc/puppet/modules
+    timeout: 720
+
+- role: ['primary-controller','controller']
+  stage: post_deployment/6008
+  type: puppet
+  parameters:
+    puppet_manifest: puppet/manifests/site-controller-post-6.pp
+    puppet_modules: puppet/modules:/etc/puppet/modules
+    timeout: 720
+
+- role: ['primary-controller','controller','compute']
+  stage: post_deployment/6007
+  type: puppet
+  parameters:
+    puppet_manifest: puppet/manifests/site-controller-compute-post.pp
+    puppet_modules: puppet/modules:/etc/puppet/modules
+    timeout: 720
+
+- role: ['compute']
+  stage: post_deployment/6005
+  type: puppet
+  parameters:
+    puppet_manifest: puppet/manifests/site-compute-post-1.pp
+    puppet_modules: puppet/modules:/etc/puppet/modules
+    timeout: 720
+
+- role: ['compute']
+  stage: post_deployment/6006
+  type: puppet
+  parameters:
+    puppet_manifest: puppet/manifests/site-compute-post-2.pp
+    puppet_modules: puppet/modules:/etc/puppet/modules
+    timeout: 720
+
+- role: ['compute']
+  stage: post_deployment/6009
+  type: puppet
+  parameters:
+    puppet_manifest: puppet/manifests/site-compute-post-3.pp
+    puppet_modules: puppet/modules:/etc/puppet/modules
+    timeout: 720
