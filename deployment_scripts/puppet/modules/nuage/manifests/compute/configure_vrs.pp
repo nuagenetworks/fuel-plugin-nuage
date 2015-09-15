@@ -1,4 +1,4 @@
-class nuage::compute::configure_vrs_vsc_communication {
+class nuage::compute::configure_vrs {
 
   file_line { 'openvswitch active controller ip address':
     ensure      => present,

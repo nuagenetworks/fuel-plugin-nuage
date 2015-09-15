@@ -1,10 +1,22 @@
 class nuage::controller::purge_neutron_packages {
 
-  define purge_neutron_package {
-    package {'$name':
-      ensure => "purged"
-    }
+  package {'neutron-dhcp-agent':
+    ensure => "purged"
   }
 
-  purge_neutron_package { ['neutron-dhcp-agent', 'neutron-l3-agent', 'neutron-metadata-agent', 'neutron-plugin-openvswitch-agent', 'openvswitch-switch'] :}
+  package {'neutron-l3-agent':
+    ensure => "purged"
+  }
+
+  package {'neutron-metadata-agent':
+    ensure => "purged"
+  }
+
+  package {'neutron-plugin-openvswitch-agent':
+    ensure => "purged"
+  }
+
+  package {'openvswitch-switch':
+    ensure => "purged"
+  }
 }
