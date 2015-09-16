@@ -3,11 +3,11 @@
 # ['cinder', 'compute'] will be applied only on
 # cinder and compute nodes
 
-- role: ['primary-controller','controller']
+- role: ['primary-controller']
   stage: post_deployment/6000
   type: shell
   parameters:
-    cmd: ./disable_pacemaker_neutron_services.sh
+    cmd: sudo bash ./disable_pacemaker_neutron_services.sh
     timeout: 720
 
 - role: ['primary-controller','controller']
@@ -94,6 +94,6 @@
   stage: post_deployment/6011
   type: shell
   parameters:
-    cmd: ./open_vxlan_ports.sh
+    cmd: sudo bash ./open_vxlan_ports.sh
     timeout: 720
   fail_on_error: false
