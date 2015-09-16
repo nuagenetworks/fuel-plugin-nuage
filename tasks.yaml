@@ -94,14 +94,6 @@
   stage: post_deployment/6011
   type: shell
   parameters:
-    cmd: ./open_vnc_ports.sh
-    timeout: 720
-  fail_on_error: false
-
-- role: ['compute']
-  stage: post_deployment/6012
-  type: shell
-  parameters:
     cmd: ./open_vxlan_ports.sh
     timeout: 720
   fail_on_error: false
