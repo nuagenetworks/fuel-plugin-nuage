@@ -83,7 +83,7 @@
     timeout: 720
 
 - role: ['compute']
-  stage: post_deployment/6010
+  stage: post_deployment/6012
   type: puppet
   parameters:
     puppet_manifest: puppet/manifests/site-compute-post-3.pp
@@ -91,7 +91,23 @@
     timeout: 720
 
 - role: ['compute']
+  stage: post_deployment/6010
+  type: puppet
+  parameters:
+    puppet_manifest: puppet/manifests/site-compute-post-4.pp
+    puppet_modules: puppet/modules:/etc/puppet/modules
+    timeout: 720
+
+- role: ['compute']
   stage: post_deployment/6011
+  type: puppet
+  parameters:
+    puppet_manifest: puppet/manifests/site-compute-post-5.pp
+    puppet_modules: puppet/modules:/etc/puppet/modules
+    timeout: 720
+
+- role: ['compute']
+  stage: post_deployment/6013
   type: shell
   parameters:
     cmd: sudo bash ./open_vxlan_ports.sh

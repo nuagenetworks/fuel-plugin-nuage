@@ -5,4 +5,10 @@ class nuage::compute::restart_services {
     path     => '/usr/bin:/usr/sbin:/bin:/sbin',
     environment => "HOME=/root",
   }
+
+  exec { 'restart nuage metadata agent':
+    command  => 'service nuage-metadata-agent restart',
+    path     => '/usr/bin:/usr/sbin:/bin:/sbin',
+    environment => "HOME=/root",
+  }
 }
