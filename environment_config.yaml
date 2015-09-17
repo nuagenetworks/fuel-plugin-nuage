@@ -1,12 +1,12 @@
 attributes:
   nuage_net_partition_name:
-    value: 'FUEL'
+    value: 'NUAGEPLUGIN'
     label: 'Nuage Net Partition name'
     description: 'Nuage Net Partition name for VSD'
     weight: 20
     type: "text"
   nuage_vsd_ip:
-    value: '10.20.0.7:8443'
+    value: '10.20.0.28:8443'
     label: 'VSD IP address'
     description: 'VSD Management IP address'
     weight: 30
