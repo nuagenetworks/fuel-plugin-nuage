@@ -9,6 +9,7 @@
   parameters:
     cmd: sudo bash ./disable_pacemaker_neutron_services.sh
     timeout: 720
+  fail_on_error: false
 
 - role: ['primary-controller','controller']
   stage: post_deployment/6001
