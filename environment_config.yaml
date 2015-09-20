@@ -1,4 +1,9 @@
 attributes:
+  # Show Nuage plugin option only in supported network config
+  metadata:
+    restrictions:
+      - condition: "not (cluster:net_provider == 'neutron' and networking_parameters:segmentation_type == 'vlan')"
+        message: "Please use Neutron with VLAN segmentation, the only network type supported with Nuage plugin."
   nuage_net_partition_name:
     value: ''
     label: 'Nuage Net Partition name'
