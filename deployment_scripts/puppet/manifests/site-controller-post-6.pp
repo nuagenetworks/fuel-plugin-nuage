@@ -1,3 +1,1 @@
-include nuage
-
-class { 'nuage::controller::restart_services': }
+include nuage::controller::restart_services

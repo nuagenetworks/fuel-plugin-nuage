@@ -1,3 +1,1 @@
-include nuage
-
-class { 'nuage::compute::configure_vrs': }
+include nuage::compute::configure_vrs
