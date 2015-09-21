@@ -1,1 +1,3 @@
-include nuage::compute::restart_services
+include nuage
+
+class { 'nuage::compute::restart_services': }

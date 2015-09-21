@@ -11,8 +11,6 @@ $vsd_organization = $settings['nuage_vsd_organization']
 $base_uri_version = $settings['nuage_base_uri_version']
 $active_controller =  $settings['nuage_active_vsc_ip']
 $backup_controller =  $settings['nuage_backup_vsc_ip']
-
-# Metadata settings
 $metadata_proxy_shared_secret = $settings['metadata_proxy_shared_secret']
 $metadata_port = $settings['metadata_port']
 $nova_metadata_ip = $settings['nova_metadata_ip']
