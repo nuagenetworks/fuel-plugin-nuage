@@ -1,1 +1,2 @@
-include nuage::compute::configure_vrs
+include nuage
+include nuage::compute::install_nuage_metadata_agent

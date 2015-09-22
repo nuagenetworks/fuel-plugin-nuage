@@ -1,24 +1,33 @@
+# Configure Nuage neutron plugin
+
 class nuage::controller::configure_nuage_plugin {
 
-  package{ 'nuage-neutron':
+  include ::nuage::params
+
+  service { $::nuage::params::neutron_server:
+    ensure    => running,
+    enable    => true,
+    subscribe => File['/etc/neutron/plugin.ini']
+  }
+
+  package { $::nuage::params::nuage_neutron:
     ensure => present,
-  }
-
+  } ->
   file { '/etc/neutron/plugins/nuage':
-    ensure => 'directory',
-  }
-
+    ensure => directory,
+    owner => 'root',
+    group => 'neutron',
+    mode => '0640'
+  } ->
   file { '/etc/neutron/plugins/nuage/plugin.ini':
     ensure  => 'present',
     require => File['/etc/neutron/plugins/nuage'],
     content => template('nuage/plugin.ini.erb'),
-  }
-
-  #Create a symlink
-
+  } ->
   file {'/etc/neutron/plugin.ini':
     ensure  => link,
     target  => '/etc/neutron/plugins/nuage/plugin.ini',
-    require => Package['nuage-neutron']
+    require => Package[$::nuage::params::nuage_neutron],
+    notify  => Service[$::nuage::params::neutron_server]
   }
 }

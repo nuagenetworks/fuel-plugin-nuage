@@ -1,1 +1,2 @@
-include nuage::compute::install_nuage_vrs
+include nuage
+include nuage::compute::configure_vrs
