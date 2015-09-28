@@ -1,6 +1,6 @@
+# Parameters for configuring Nuage Fuel plugin
 class nuage {
 
-# General configuration
 $settings = hiera('nuage')
 
 $net_partition_name = $settings['nuage_net_partition_name']
@@ -11,7 +11,8 @@ $vsd_organization = $settings['nuage_vsd_organization']
 $base_uri_version = $settings['nuage_base_uri_version']
 $active_controller =  $settings['nuage_active_vsc_ip']
 $backup_controller =  $settings['nuage_backup_vsc_ip']
-$metadata_proxy_shared_secret = $settings['metadata_proxy_shared_secret']
+
+## Metadata settings
 $metadata_port = $settings['metadata_port']
 $nova_metadata_ip = $settings['nova_metadata_ip']
 $nova_metadata_port = $settings['nova_metadata_port']
@@ -22,4 +23,8 @@ $nova_os_tenant_name = $settings['nova_os_tenant_name']
 $nova_os_auth_url = $settings['nova_os_auth_url']
 $metadata_agent_start_with_ovs = $settings['metadata_agent_start_with_ovs']
 $nova_api_endpoint_type = $settings['nova_api_endpoint_type']
+
+$neutron_settings=hiera('quantum_settings')
+$metadata_secret=$neutron_settings['metadata']['metadata_proxy_shared_secret']
+$metadata_listen_port=$neutron_settings['metadata']['metadata_listen_port']
 }

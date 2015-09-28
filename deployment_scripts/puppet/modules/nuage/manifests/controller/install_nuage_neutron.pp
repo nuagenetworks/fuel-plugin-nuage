@@ -1,14 +1,18 @@
+# Install Nuage neutron packages
+
 class nuage::controller::install_nuage_neutron {
 
-  package{ 'nuage-neutron':
+  include ::nuage::params
+
+  package { $::nuage::params::nuage_neutron:
     ensure => present,
   }
 
-  package{ 'nuage-openstack-neutronclient':
+  package { $::nuage::params::nuage_openstack_neutronclient:
     ensure => present,
   }
 
-  package{ 'python-nuagenetlib':
+  package { $::nuage::params::nuage_python_nuagenetlib:
     ensure => present,
   }
 }

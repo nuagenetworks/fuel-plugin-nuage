@@ -1,22 +1,25 @@
-class nuage::controller::disable_neutron_services { 
+# Disable non-essential neutron services
+class nuage::controller::disable_neutron_services {
 
-  service {'neutron-dhcp-agent':
-    ensure => "stopped"
+  include ::nuage::params
+
+  service { $::nuage::params::neutron_dhcp_agent:
+    ensure => 'stopped'
   }
 
-  service {'neutron-l3-agent':
-    ensure => "stopped"
+  service { $::nuage::params::neutron_l3_agent:
+    ensure => 'stopped'
   }
 
-  service {'neutron-metadata-agent':
-       ensure => "stopped"
+  service { $::nuage::params::neutron_metadata_agent:
+    ensure => 'stopped'
   }
 
-  service {'neutron-plugin-openvswitch-agent':
-    ensure => "stopped"
+  service { $::nuage::params::neutron_plugin_openvswitch_agent:
+    ensure => 'stopped'
   }
 
-  service {'openvswitch-switch':
-    ensure => "stopped"
+  service { $::nuage::params::openvswitch_switch:
+    ensure => 'stopped'
   }
 }

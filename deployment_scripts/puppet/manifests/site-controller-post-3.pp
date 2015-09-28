@@ -1,3 +1,1 @@
-include nuage
-
-class { 'nuage::controller::install_nuage_neutron': }
+include nuage::controller::install_nuage_neutron

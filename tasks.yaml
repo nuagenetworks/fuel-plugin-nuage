@@ -52,26 +52,10 @@
     timeout: 720
 
 - role: ['primary-controller','controller']
-  stage: post_deployment/6009
-  type: puppet
-  parameters:
-    puppet_manifest: puppet/manifests/site-controller-post-6.pp
-    puppet_modules: puppet/modules:/etc/puppet/modules
-    timeout: 720
-
-- role: ['primary-controller','controller','compute']
-  stage: post_deployment/6008
-  type: puppet
-  parameters:
-    puppet_manifest: puppet/manifests/site-controller-compute-post.pp
-    puppet_modules: puppet/modules:/etc/puppet/modules
-    timeout: 720
-
-- role: ['compute']
   stage: post_deployment/6006
   type: puppet
   parameters:
-    puppet_manifest: puppet/manifests/site-compute-post-1.pp
+    puppet_manifest: puppet/manifests/site-controller-post-6.pp
     puppet_modules: puppet/modules:/etc/puppet/modules
     timeout: 720
 
@@ -79,12 +63,20 @@
   stage: post_deployment/6007
   type: puppet
   parameters:
+    puppet_manifest: puppet/manifests/site-compute-post-1.pp
+    puppet_modules: puppet/modules:/etc/puppet/modules
+    timeout: 720
+
+- role: ['compute']
+  stage: post_deployment/6008
+  type: puppet
+  parameters:
     puppet_manifest: puppet/manifests/site-compute-post-2.pp
     puppet_modules: puppet/modules:/etc/puppet/modules
     timeout: 720
 
 - role: ['compute']
-  stage: post_deployment/6012
+  stage: post_deployment/6009
   type: puppet
   parameters:
     puppet_manifest: puppet/manifests/site-compute-post-3.pp
@@ -93,22 +85,6 @@
 
 - role: ['compute']
   stage: post_deployment/6010
-  type: puppet
-  parameters:
-    puppet_manifest: puppet/manifests/site-compute-post-4.pp
-    puppet_modules: puppet/modules:/etc/puppet/modules
-    timeout: 720
-
-- role: ['compute']
-  stage: post_deployment/6011
-  type: puppet
-  parameters:
-    puppet_manifest: puppet/manifests/site-compute-post-5.pp
-    puppet_modules: puppet/modules:/etc/puppet/modules
-    timeout: 720
-
-- role: ['compute']
-  stage: post_deployment/6013
   type: shell
   parameters:
     cmd: sudo bash ./open_vxlan_ports.sh
