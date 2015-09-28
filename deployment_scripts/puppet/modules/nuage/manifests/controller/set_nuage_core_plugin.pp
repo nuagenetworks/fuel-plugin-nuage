@@ -10,5 +10,7 @@ class nuage::controller::set_nuage_core_plugin (
   neutron_config {
     'DEFAULT/core_plugin' : value => $core_plugin;
     'DEFAULT/service_plugins': value => $service_plugins;
+    'DEFAULT/metadata_port': value => $neutron::metadata_port;
+    'DEFAULT/nova_metadata_ip': value => $neutron::nova_metadata_ip;
   }
 }

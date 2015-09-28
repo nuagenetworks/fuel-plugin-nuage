@@ -26,5 +26,4 @@ $nova_api_endpoint_type = $settings['nova_api_endpoint_type']
 
 $neutron_settings=hiera('quantum_settings')
 $metadata_secret=$neutron_settings['metadata']['metadata_proxy_shared_secret']
-$metadata_listen_port=$neutron_settings['metadata']['metadata_listen_port']
 }

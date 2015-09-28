@@ -7,7 +7,7 @@ METADATA_PORT=<%= scope.lookupvar('nuage::metadata_port') %>
 NOVA_METADATA_IP=<%= scope.lookupvar('nuage::nova_metadata_ip') %>
 # NOVA_METADATA_PORT: TCP Port used by Nova metadata server
 # (metadata_listen_port in nova.conf or nova_metadata_port in neutron.conf)
-NOVA_METADATA_PORT=<%= scope.lookupvar('nuage::metadata_listen_port') %>
+NOVA_METADATA_PORT=<%= scope.lookupvar('nuage::nova_metadata_port') %>
 # METADATA_PROXY_SHARED_SECRET: Shared secret to sign the instance-id
 # request. Must match metadata_proxy_shared_secret in nova.conf
 METADATA_PROXY_SHARED_SECRET="<%= scope.lookupvar('nuage::metadata_secret') %>"
