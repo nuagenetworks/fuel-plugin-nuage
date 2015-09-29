@@ -35,7 +35,7 @@ class nuage::controller::nova (
     'DEFAULT/libvirt_vif_driver' : value => $libvirt_vif_driver;
     'DEFAULT/use_forwarded_for' : value => 'True';
     'DEFAULT/instance_name_template' : value => 'inst-%08x';
-    'DEFAULT/metadata_listen_port' : value => $neutron::nova_metadata_port;
+    'DEFAULT/metadata_listen_port' : value => $nuage::nova_metadata_port;
     'neutron/ovs_bridge' : value => $neutron_ovs_bridge;
     'neutron/service_metadata_proxy' : value => 'True';
   }
