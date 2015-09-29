@@ -53,7 +53,7 @@ attributes:
     weight: 90
     type: "text"
   metadata_port:
-    value: ''
+    value: '9697'
     label: 'Nuage Metadata agent port number'
     description: 'Nuage Metadata agent port number'
     weight: 100
@@ -65,7 +65,7 @@ attributes:
     weight: 110
     type: "text"
   nova_metadata_port:
-    value: ''
+    value: '8775'
     label: 'Nova metadata port number'
     description: 'Nova metadata port number'
     weight: 120
