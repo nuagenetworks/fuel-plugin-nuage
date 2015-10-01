@@ -70,3 +70,9 @@ attributes:
     description: 'Nova metadata port number'
     weight: 120
     type: "text"
+  nova_region_name:
+    value: 'RegionOne'
+    label: 'Nova Region Name'
+    description: 'Nova Region name'
+    weight: 130
+    type: "text"

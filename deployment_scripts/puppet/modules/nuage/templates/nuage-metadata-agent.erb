@@ -26,3 +26,5 @@ NOVA_OS_AUTH_URL=http://<%= scope.lookupvar('nuage::auth_ip') %>:5000/v2.0
 NUAGE_METADATA_AGENT_START_WITH_OVS=<%= scope.lookupvar('nuage::metadata_agent_start_with_ovs') %>
 # NOVA_API_ENDPOINT_TYPE: one of publicURL, internalURL, adminURL
 NOVA_API_ENDPOINT_TYPE=<%= scope.lookupvar('nuage::nova_api_endpoint_type') %>
+# NOVA_REGION_NAME:
+NOVA_REGION_NAME=<%= scope.lookupvar('nuage::nova_region_name') %>
