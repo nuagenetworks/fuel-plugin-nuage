@@ -58,21 +58,15 @@ attributes:
     description: 'Nuage Metadata agent port number'
     weight: 100
     type: "text"
-  nova_metadata_ip:
-    value: ''
-    label: 'Nova metadata server IP address'
-    description: 'Nova metadata server IP address'
-    weight: 110
-    type: "text"
   nova_metadata_port:
     value: '8775'
     label: 'Nova metadata port number'
     description: 'Nova metadata port number'
-    weight: 120
+    weight: 110
     type: "text"
   nova_region_name:
     value: 'RegionOne'
     label: 'Nova Region Name'
     description: 'Nova Region name'
-    weight: 130
+    weight: 120
     type: "text"

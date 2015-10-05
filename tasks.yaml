@@ -90,3 +90,11 @@
     cmd: sudo bash ./open_vxlan_ports.sh
     timeout: 720
   fail_on_error: false
+
+- role: ['primary-controller','controller']
+  stage: post_deployment/6011
+  type: shell
+  parameters:
+    cmd: sudo bash ./open_nuage_metadata_ports.sh
+    timeout: 720
+  fail_on_error: false
