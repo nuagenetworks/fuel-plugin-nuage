@@ -95,6 +95,14 @@
   stage: post_deployment/6011
   type: shell
   parameters:
-    cmd: sudo bash ./open_nuage_metadata_ports.sh
+    cmd: sudo bash ./open_metadata_port_controller.sh
+    timeout: 720
+  fail_on_error: false
+
+- role: ['compute']
+  stage: post_deployment/6012
+  type: shell
+  parameters:
+    cmd: sudo bash ./open_metadata_port_compute.sh
     timeout: 720
   fail_on_error: false
