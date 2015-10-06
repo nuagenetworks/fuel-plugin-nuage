@@ -70,3 +70,16 @@ attributes:
     description: 'Nova Region name'
     weight: 120
     type: "text"
+  nova_api_endpoint_type:
+    type: "radio"
+    weight: 130
+    value: "publicURL"
+    label: "Nova API endpoint type"
+    description: "Select Nova API endpoint type"
+    values:
+      - data: "publicURL"
+        label: "publicURL"
+      - data: "internalURL"
+        label: "internalURL"
+      - data: "adminURL"
+        label: "adminURL"

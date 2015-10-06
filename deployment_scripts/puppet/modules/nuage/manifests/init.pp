@@ -19,11 +19,11 @@ $backup_controller =  $settings['nuage_backup_vsc_ip']
 $metadata_port = $settings['metadata_port']
 $nova_metadata_port = $settings['nova_metadata_port']
 $nova_region_name = $settings['nova_region_name']
+$nova_api_endpoint_type = $settings['nova_api_endpoint_type']
 $metadata_secret=$neutron_settings['metadata']['metadata_proxy_shared_secret']
+$nova_os_password = $nova_settings['user_password']
 $nova_client_version = '2'
 $nova_os_username = 'nova'
-$nova_os_password = $nova_settings['user_password']
 $nova_os_tenant_name = 'services'
 $metadata_agent_start_with_ovs = 'true'
-$nova_api_endpoint_type = 'publicURL'
 }
