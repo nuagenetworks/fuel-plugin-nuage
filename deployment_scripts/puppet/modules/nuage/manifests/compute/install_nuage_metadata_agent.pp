@@ -14,7 +14,7 @@ class nuage::compute::install_nuage_metadata_agent {
   } ->
   file { '/etc/default/nuage-metadata-agent':
     content => template('nuage/nuage-metadata-agent.erb'),
-    notify  => Service[$::nuage::params::nuage_metadata_agent],
+    notify  => Service[$::nuage::params::nuage_openvswitch_switch],
   }
 
   service { $::nuage::params::nuage_metadata_agent:
