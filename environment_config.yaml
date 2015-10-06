@@ -58,21 +58,28 @@ attributes:
     description: 'Nuage Metadata agent port number'
     weight: 100
     type: "text"
-  nova_metadata_ip:
-    value: ''
-    label: 'Nova metadata server IP address'
-    description: 'Nova metadata server IP address'
-    weight: 110
-    type: "text"
   nova_metadata_port:
     value: '8775'
     label: 'Nova metadata port number'
     description: 'Nova metadata port number'
-    weight: 120
+    weight: 110
     type: "text"
   nova_region_name:
     value: 'RegionOne'
     label: 'Nova Region Name'
     description: 'Nova Region name'
-    weight: 130
+    weight: 120
     type: "text"
+  nova_api_endpoint_type:
+    type: "radio"
+    weight: 130
+    value: "publicURL"
+    label: "Nova API endpoint type"
+    description: "Select Nova API endpoint type"
+    values:
+      - data: "publicURL"
+        label: "publicURL"
+      - data: "internalURL"
+        label: "internalURL"
+      - data: "adminURL"
+        label: "adminURL"
