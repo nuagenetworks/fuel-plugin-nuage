@@ -22,8 +22,8 @@ class nuage::params {
         $nuage_neutron  = 'nuage-neutron'
         $nuage_metadata_agent = 'nuage-metadata-agent'
         $nuage_openstack_neutronclient = 'nuage-openstack-neutronclient'
-        $nuage_python_nuagenetlib = 'python-nuagenetlib'
-        $nuage_openvswitch_switch = 'nuage-openvswitch-switch'
+        $nuage_python_nuagenetlib = 'nuagenetlib'
+        $nuage_openvswitch_switch = 'nuage-openvswitch'
     } elsif($::osfamily == 'Debian') {
 
         $nova_api = 'nova-api'
