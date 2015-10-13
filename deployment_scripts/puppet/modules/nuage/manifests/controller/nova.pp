@@ -26,7 +26,8 @@ class nuage::controller::nova (
 
   Nova_config<||> ~> Service[$::nuage::params::nova_api,
     $::nuage::params::nova_scheduler,
-    $::nuage::params::nova_conductor]
+    $::nuage::params::nova_conductor,
+    $::nuage::params::neutron_server]
 
   #Setting nova.conf parameters on all Openstack nodes
   nova_config {

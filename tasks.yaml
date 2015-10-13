@@ -67,7 +67,7 @@
     puppet_modules: puppet/modules:/etc/puppet/modules
     timeout: 720
 
-- role: ['primary-controller','controller']
+- role: ['primary-controller']
   stage: post_deployment/6008
   type: puppet
   parameters:
@@ -75,8 +75,32 @@
     puppet_modules: puppet/modules:/etc/puppet/modules
     timeout: 720
 
-- role: ['compute']
+- role: ['primary-controller']
   stage: post_deployment/6009
+  type: puppet
+  parameters:
+    puppet_manifest: puppet/manifests/site-controller-post-7.pp
+    puppet_modules: puppet/modules:/etc/puppet/modules
+    timeout: 720
+
+- role: ['controller']
+  stage: post_deployment/6010
+  type: puppet
+  parameters:
+    puppet_manifest: puppet/manifests/site-controller-post-8.pp
+    puppet_modules: puppet/modules:/etc/puppet/modules
+    timeout: 720
+
+- role: ['primary-controller','controller']
+  stage: post_deployment/6011
+  type: puppet
+  parameters:
+    puppet_manifest: puppet/manifests/site-controller-post-9.pp
+    puppet_modules: puppet/modules:/etc/puppet/modules
+    timeout: 720
+
+- role: ['compute']
+  stage: post_deployment/6012
   type: puppet
   parameters:
     puppet_manifest: puppet/manifests/site-compute-post-1.pp
@@ -84,7 +108,7 @@
     timeout: 720
 
 - role: ['compute']
-  stage: post_deployment/6010
+  stage: post_deployment/6013
   type: puppet
   parameters:
     puppet_manifest: puppet/manifests/site-compute-post-2.pp
@@ -92,7 +116,7 @@
     timeout: 720
 
 - role: ['compute']
-  stage: post_deployment/6011
+  stage: post_deployment/6014
   type: puppet
   parameters:
     puppet_manifest: puppet/manifests/site-compute-post-3.pp
