@@ -102,7 +102,7 @@ def main():
         sys.exit(1)
 
     id = response[3][0]['ID']
-    plugin_config.set('restproxy', 'cms_id', id)
+    plugin_config.set('RESTPROXY', 'cms_id', id)
     plugin_config.write_file()
     logger.info("Successfully added CMS id to the plugin file on the standby controller")
 
