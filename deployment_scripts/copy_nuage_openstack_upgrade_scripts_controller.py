@@ -51,6 +51,6 @@ dir = '/root/nuage-cms'
 if os.path.exists(dir):    
     ret = os.system("rm -irf %s" % dir)
 
-ret = os.system("cd /root")
+ret = os.chdir('/root')
 ret = os.system("mkdir -p nuage-cms")
 ret = os.system("tar -xzvf nuage-openstack-upgrade.tar.gz -C nuage-cms")
