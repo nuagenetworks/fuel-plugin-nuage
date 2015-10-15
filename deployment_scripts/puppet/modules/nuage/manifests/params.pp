@@ -41,10 +41,10 @@ class nuage::params {
         $python_novaclient = 'python-novaclient'
         $python_twisted = 'python-twisted'
 
-        $nuage_neutron  = 'nuage-neutron'
+        $nuage_neutron  = 'nuage-openstack-neutron'
         $nuage_metadata_agent = 'nuage-metadata-agent'
         $nuage_openstack_neutronclient = 'nuage-openstack-neutronclient'
-        $nuage_python_nuagenetlib = 'python-nuagenetlib'
+        $nuage_python_nuagenetlib = 'nuagenetlib'
         $nuage_openvswitch_switch = 'nuage-openvswitch-switch'
     }
 }
