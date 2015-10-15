@@ -32,12 +32,6 @@ $host=hiera('master_ip')
 $username = $settings['fuel_username']
 $password = $settings['fuel_password']
 
-## Fuel Nuage plugin version
-$plugin_version = $settings['nuage_plugin_version']
-
 ## Nuage Openstack Upgrade scripts necessary for latest Kilo release
 $copy_file = $settings['nuage_enable_cms_script']
-
-## Mirantis Openstack cluster name
-$mos_cluster = $settings['mos_cluster_name']
 }

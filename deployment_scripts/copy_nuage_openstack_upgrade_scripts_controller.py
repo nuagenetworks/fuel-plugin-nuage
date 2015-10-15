@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 logger.addHandler(logging.StreamHandler())
 
-global host, username, password, copy_file, plugin_version
+global host, username, password, copy_file
 
 parser = argparse.ArgumentParser(description="Copy the openstack upgrade package from Fuel")
 parser.add_argument('-i', '--host', help="IP address of the Fuel node",
@@ -19,17 +19,14 @@ parser.add_argument('-p', '--password', help="Password for Fuel node login",
                     action='store')
 parser.add_argument('-f', '--copy_file', help="Nuage Openstack Upgrade scripts file",
                     action='store')
-parser.add_argument('-v', '--plugin_version', help="Fuel Nuage Plugin Version",
-                    action='store')
 
 args = parser.parse_args()
 host = args.host
 username = args.username
 password = args.password
 copy_file = args.copy_file
-plugin_version = args.plugin_version
 
-remote_path = "/var/www/nailgun/plugins/nuage-" + plugin_version + "/repositories/ubuntu/" + copy_file
+remote_path = "/var/www/nailgun/plugins/nuage-1.0/repositories/ubuntu/" + copy_file
 local_path = "/root/nuage-openstack-upgrade.tar.gz"
 ssh = paramiko.SSHClient()
 try:
@@ -45,12 +42,3 @@ except paramiko.SSHException:
     logger.error("Issues with SSH service")
 except socket.error:
     logger.error("Host unreachable")
-
-dir = '/root/nuage-cms'
-
-if os.path.exists(dir):    
-    ret = os.system("rm -irf %s" % dir)
-
-ret = os.chdir('/root')
-ret = os.system("mkdir -p nuage-cms")
-ret = os.system("tar -xzvf nuage-openstack-upgrade.tar.gz -C nuage-cms")

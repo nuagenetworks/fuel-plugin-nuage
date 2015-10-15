@@ -101,15 +101,3 @@ attributes:
     description: 'Nuage CMS Enable Script'
     weight: 160
     type: "text"
-  nuage_plugin_version:
-    value: '1.0'
-    label: 'Nuage Fuel Plugin Version'
-    description: 'Nuage Fuel Plugin Version'
-    weight: 170
-    type: "text"
-  mos_cluster_name:
-    value: ''
-    label: 'Mirantis Openstack Cluster Name'
-    description: 'Mirantis Openstack Cluster Name'
-    weight: 180
-    type: "text"

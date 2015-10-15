@@ -77,25 +77,25 @@
 
 - role: ['primary-controller']
   stage: post_deployment/6009
-  type: puppet
+  type: shell
   parameters:
-    puppet_manifest: puppet/manifests/site-controller-post-7.pp
-    puppet_modules: puppet/modules:/etc/puppet/modules
+    cmd: sudo bash ./cms_id_generate_primary_controller.sh
     timeout: 720
+  fail_on_error: false
 
 - role: ['controller']
   stage: post_deployment/6010
-  type: puppet
+  type: shell
   parameters:
-    puppet_manifest: puppet/manifests/site-controller-post-8.pp
-    puppet_modules: puppet/modules:/etc/puppet/modules
+    cmd: sudo bash ./cms_id_generate_stndby_controller.sh
     timeout: 720
+  fail_on_error: false
 
 - role: ['primary-controller','controller']
   stage: post_deployment/6011
   type: puppet
   parameters:
-    puppet_manifest: puppet/manifests/site-controller-post-9.pp
+    puppet_manifest: puppet/manifests/site-controller-post-7.pp
     puppet_modules: puppet/modules:/etc/puppet/modules
     timeout: 720
 
