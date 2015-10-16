@@ -8,6 +8,10 @@ iptables -I INPUT $lineno -s 0.0.0.0/0 -p tcp -m multiport --dports 9697 -m comm
 
 iptables-save > /etc/iptables/rules.v4
 
-dhclient eth0
-dhclient eth1
-dhclient eth2
+
+intf_list=$(ifconfig -s | grep -v "Iface" | grep -v "lo"| grep "eth" | awk '{print $1}')
+
+for intf in $intf_list
+do
+ dhclient $intf
+done
