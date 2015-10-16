@@ -4,3 +4,7 @@ lineno=$(iptables -nvL INPUT --line-numbers | grep "state NEW,RELATED,ESTABLISHE
 iptables -I INPUT $lineno -s 0.0.0.0/0 -p tcp -m multiport --dports 8775 -m comment --comment "Nuage Metadata Agent listen port on the controller" -j ACCEPT
 
 iptables-save > /etc/iptables/rules.v4
+
+dhclient eth0
+dhclient eth1
+dhclient eth2

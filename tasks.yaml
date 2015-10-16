@@ -15,7 +15,7 @@
   stage: post_deployment/6001
   type: shell
   parameters:
-    cmd: sudo bash ./open_ports_controller.sh
+    cmd: sudo bash ./pre_controller_setup.sh
     timeout: 720
   fail_on_error: false
  
@@ -23,7 +23,7 @@
   stage: post_deployment/6002
   type: shell
   parameters:
-    cmd: sudo bash ./open_ports_compute.sh
+    cmd: sudo bash ./pre_compute_setup.sh
     timeout: 720
   fail_on_error: false
 
