@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 logger.addHandler(logging.StreamHandler())
 
-global host, username, password, copy_file
+global host, username, password
 
 parser = argparse.ArgumentParser(description="Copy the openstack upgrade package from Fuel")
 parser.add_argument('-i', '--host', help="IP address of the Fuel node",
