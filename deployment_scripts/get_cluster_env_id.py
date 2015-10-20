@@ -2,10 +2,7 @@ import argparse
 import paramiko
 import socket
 import logging
-import os
-import re
 import time
-import yaml
 import itertools
 
 logger = logging.getLogger(__name__)
@@ -36,7 +33,7 @@ def get_mos_cluster_id():
     file_list = list()
     try:
         ssh.connect(hostname=host, username=username, password=password, timeout=60.0)
-        stdin, stdout, stderr = ssh.exec_command("fuel env | grep 2 | awk '{print $1}'")
+        stdin, stdout, stderr = ssh.exec_command("fuel env | grep operational | awk '{print $1}'")
         out = stdout.read()
         if out is "":
             logger.error("Could not obtain ENV ID")
