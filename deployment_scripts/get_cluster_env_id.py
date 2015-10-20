@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 logger.addHandler(logging.StreamHandler())
 
-global host, username, password, copy_file
+global host, username, password
 
 parser = argparse.ArgumentParser(description="Copy the openstack upgrade package from Fuel")
 parser.add_argument('-i', '--host', help="IP address of the Fuel node",
@@ -36,9 +36,9 @@ def get_mos_cluster_id():
         stdin, stdout, stderr = ssh.exec_command("fuel env | grep operational | awk '{print $1}'")
         out = stdout.read()
         if out is "":
-            logger.error("Could not obtain ENV ID")
+            logger.error("Failed to extract MOS Environment IDs")
         else:
-            logger.info("Successfully obtained ENV ID")
+            logger.info("Successfully extracted MOS Environment IDs")
 
         file = open("/root/cluster_ids.txt", "w")
         file.write(out)
