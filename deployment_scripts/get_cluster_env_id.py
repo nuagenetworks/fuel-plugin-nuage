@@ -33,7 +33,7 @@ def get_mos_cluster_id():
     file_list = list()
     try:
         ssh.connect(hostname=host, username=username, password=password, timeout=60.0)
-        stdin, stdout, stderr = ssh.exec_command("fuel env | grep operational | awk '{print $1}'")
+        stdin, stdout, stderr = ssh.exec_command("fuel env | grep ha_compact | awk '{print $1}'")
         out = stdout.read()
         if out is "":
             logger.error("Failed to extract MOS Environment IDs")
