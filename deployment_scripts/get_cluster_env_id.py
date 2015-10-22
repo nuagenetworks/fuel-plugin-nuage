@@ -27,12 +27,31 @@ username = args.username
 password = args.password
 vip = args.vip
 
+
+def get_obj_list(filename,output):
+
+    file = open(filename, "w")
+    file.write(output)
+    file.close()
+
+    f = open(filename)
+    filecontents = f.readlines()
+    obj_list = list()
+    for line in filecontents:
+        obj = line.strip('\n')
+        obj_list.append(obj)
+
+    return obj_list
+
+
 def get_mos_cluster_id():
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     file_list = list()
     try:
         ssh.connect(hostname=host, username=username, password=password, timeout=60.0)
+        
+        ## Code to extract all MOS environment IDs for further processing
         stdin, stdout, stderr = ssh.exec_command("fuel env | grep ha_compact | awk '{print $1}'")
         out = stdout.read()
         if out is "":
@@ -40,23 +59,28 @@ def get_mos_cluster_id():
         else:
             logger.info("Successfully extracted MOS Environment IDs")
 
-        file = open("/root/cluster_ids.txt", "w")
-        file.write(out)
-        file.close()
+        env_id_list = get_obj_list("/root/cluster_ids.txt",out)
 
-        f = open("/root/cluster_ids.txt")
-        filecontents = f.readlines()
-        env_id_list = list()
-        for line in filecontents:
-            id = line.strip('\n')
-            env_id_list.append(id)
 
+        ## Code to extract MOS environment network yaml files into a dir
+        ## and later use them for searching the mgmt vip
+        stdin, stdout, stderr = ssh.exec_command("mkdir /root/env-id")
         for id in env_id_list:
-            stdin, stdout, stderr = ssh.exec_command("fuel network --env %s --download" % id)
+            stdin, stdout, stderr = ssh.exec_command("fuel network --env %s --download --dir /root/env-id" % id)
             time.sleep(10)
-            file = "network_" + id + ".yaml"
-            file_list.append(file)
 
+        stdin, stdout, stderr = ssh.exec_command("find /root/env-id -name '*.yaml'")
+        out = stdout.read()
+
+        if out is "":
+            logger.error("No MOS environment network yaml files generated")
+        else:
+            logger.info("MOS environment network yaml files have been generated")
+
+        file_list = get_obj_list("/root/network_files.txt",out)
+
+        ## Code to search for the mgmt VIP of the current environment
+        ## against all MOS environment mgmt VIPs
         for file,id in itertools.izip(file_list,env_id_list):
             stdin, stdout, stderr = ssh.exec_command("cat %s | grep management_vip | awk '{print $2}'" % file)
             mgmt_vip = stdout.read()
