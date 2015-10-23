@@ -83,21 +83,9 @@ attributes:
         label: "internalURL"
       - data: "adminURL"
         label: "adminURL"
-  fuel_username:
-    value: 'root'
-    label: 'Fuel Node Login Username'
-    description: 'Fuel Node Login Username'
-    weight: 140
-    type: "text"
-  fuel_password:
-    value: 'r00tme'
-    label: 'Fuel Node Login Password'
-    description: 'Fuel Node Login Password'
-    weight: 150
-    type: "text"
-  nuage_enable_cms_script:
+  nuage_cms_id:
     value: ''
-    label: 'Nuage CMS Enable Script'
-    description: 'Nuage CMS Enable Script'
-    weight: 160
+    label: 'Nuage CMS ID'
+    description: 'Nuage CMS ID'
+    weight: 140
     type: "text"

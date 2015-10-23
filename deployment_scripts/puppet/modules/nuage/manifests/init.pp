@@ -27,11 +27,5 @@ $nova_os_username = 'nova'
 $nova_os_tenant_name = 'services'
 $metadata_agent_start_with_ovs = 'true'
 
-## Fuel Node login
-$host=hiera('master_ip')
-$username = $settings['fuel_username']
-$password = $settings['fuel_password']
-
-## Nuage Openstack Upgrade scripts necessary for latest Kilo release
-$copy_file = $settings['nuage_enable_cms_script']
+$nuage_cms_id = $settings['nuage_cms_id']
 }
