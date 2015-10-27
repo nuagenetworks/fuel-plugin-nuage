@@ -37,10 +37,19 @@ class nuage::compute::configure_vrs {
 
   if $::nuage::backup_controller {
     file_line { 'openvswitch backup controller ip address':
-        ensure => present,
-        line   => "STANDBY_CONTROLLER=${nuage::backup_controller}",
-        match  => 'STANDBY_CONTROLLER=',
-        path   => '/etc/default/openvswitch-switch',
+      ensure => present,
+      line   => "STANDBY_CONTROLLER=${nuage::backup_controller}",
+      match  => 'STANDBY_CONTROLLER=',
+      path   => '/etc/default/openvswitch-switch',
+    }
+  }
+
+  if $::nuage::pat_to_underlay {
+    file_line { 'openvswitch uplink interface for pat to underlay':
+      ensure => present,
+      line   => "NETWORK_UPLINK_INTF=${nuage::network_uplink_intf}",
+      match  => 'NETWORK_UPLINK_INTF=',
+      path   => '/etc/default/openvswitch-switch',
     }
   }
 }
