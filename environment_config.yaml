@@ -89,3 +89,9 @@ attributes:
     description: 'Nuage CMS ID'
     weight: 140
     type: "text"
+  pat_to_underlay:
+    value: false
+    label: "PAT to Underlay"
+    description: "If selected, PAT to underlay feature will be enabled"
+    weight: 150
+    type: "checkbox"
