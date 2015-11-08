@@ -29,5 +29,5 @@ $metadata_agent_start_with_ovs = 'true'
 
 $nuage_cms_id = $settings['nuage_cms_id']
 $pat_to_underlay = $settings['pat_to_underlay']
-$network_uplink_intf = 'br-mgmt'
+$network_uplink_intf = $settings['pat_to_underlay_uplink_intf']
 }
