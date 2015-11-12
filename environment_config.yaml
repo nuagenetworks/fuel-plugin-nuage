@@ -17,8 +17,8 @@ attributes:
     weight: 30
     type: "text"
     regex:
-      source: '^(?:(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]):8443'
-      error: "Invalid VSD IP address"
+      source: '(^(?:(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))((:8443)|(:443))$'
+      error: "Valid format for VSD IP is VSD-IP:8443 for standalone VSD and VSD-IP:443 for clustered VSD"
   nuage_vsd_username:
     value: ''
     label: 'VSD username'
@@ -59,7 +59,7 @@ attributes:
     weight: 90
     type: "text"
     regex:
-      source: '^(?:(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])'
+      source: '(^(?:(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))|\s+'
       error: "Invalid Standby VSC IP address"
   metadata_port:
     value: '9697'
