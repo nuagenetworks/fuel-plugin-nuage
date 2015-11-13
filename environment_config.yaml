@@ -43,6 +43,9 @@ attributes:
     description: 'Nuage base uri version number'
     weight: 70
     type: "text"
+    regex:
+      source: '^(v[0-9]{1})_(([0-9]{1}))$'
+      error: "Invalid base URI version. Example of valid base uri version : v3_2 for VSP release 3.2"
   nuage_active_vsc_ip:
     value: ''
     label: 'Active VSC IP address'
