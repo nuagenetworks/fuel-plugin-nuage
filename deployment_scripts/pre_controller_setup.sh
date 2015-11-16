@@ -5,7 +5,7 @@ iptables -I INPUT $lineno -s 0.0.0.0/0 -p tcp -m multiport --dports 8775 -m comm
 
 iptables-save > /etc/iptables/rules.v4
 
-intf_list=$(ifconfig -a | grep "eth" | awk '{print $1}')
+intf_list=$(ifconfig -a | grep "bond" | awk '{print $1}')
 
 for intf in $intf_list
 do

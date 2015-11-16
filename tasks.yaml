@@ -1,8 +1,3 @@
-# This tasks will be applied on controller nodes,
-# here you can also specify several roles, for example
-# ['cinder', 'compute'] will be applied only on
-# cinder and compute nodes
-
 - role: ['primary-controller']
   stage: post_deployment/6000
   type: shell
@@ -75,16 +70,8 @@
     puppet_modules: puppet/modules:/etc/puppet/modules
     timeout: 720
 
-- role: ['primary-controller','controller']
-  stage: post_deployment/6009
-  type: shell
-  parameters:
-    cmd: sudo bash ./test_neutron_setup_with_nuage_plugin.sh
-    timeout: 720
-  fail_on_error: true
-
 - role: ['compute']
-  stage: post_deployment/6010
+  stage: post_deployment/6009
   type: puppet
   parameters:
     puppet_manifest: puppet/manifests/site-compute-post-1.pp
@@ -92,7 +79,7 @@
     timeout: 720
 
 - role: ['compute']
-  stage: post_deployment/6011
+  stage: post_deployment/6010
   type: puppet
   parameters:
     puppet_manifest: puppet/manifests/site-compute-post-2.pp
@@ -100,9 +87,17 @@
     timeout: 720
 
 - role: ['compute']
-  stage: post_deployment/6012
+  stage: post_deployment/6011
   type: puppet
   parameters:
     puppet_manifest: puppet/manifests/site-compute-post-3.pp
     puppet_modules: puppet/modules:/etc/puppet/modules
     timeout: 720
+
+- role: ['primary-controller','controller']
+  stage: post_deployment/6012
+  type: shell
+  parameters:
+    cmd: sudo bash ./test_neutron_setup_with_nuage_plugin.sh
+    timeout: 720
+  fail_on_error: true
