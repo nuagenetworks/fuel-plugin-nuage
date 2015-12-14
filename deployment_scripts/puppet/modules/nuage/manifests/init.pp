@@ -1,7 +1,7 @@
 # Parameters for configuring Nuage Fuel plugin
 class nuage {
 
-$settings = hiera('nuage')
+$settings = hiera('nuage-openstack-fuel-plugin')
 $nova_settings=hiera('nova')
 $neutron_settings=hiera('quantum_settings')
 $nova_auth_ip=hiera('management_vip')

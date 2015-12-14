@@ -1,5 +1,5 @@
 # Plugin name
-name: nuage
+name: nuage-openstack-fuel-plugin
 # Human-readable name for your plugin
 title: Fuel Nuage plugin
 # Plugin version
