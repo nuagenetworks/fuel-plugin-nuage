@@ -1,2 +1,1 @@
-include nuage
-include nuage::controller::reconfigure_fuel_networks
+include nuage::controller::configure_nuage_horizon
