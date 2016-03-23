@@ -3,7 +3,7 @@ class nuage {
 
 $settings = hiera('nuage-openstack-fuel-plugin')
 $nova_settings=hiera('nova')
-$neutron_settings=hiera('quantum_settings')
+$neutron_settings=hiera_hash('quantum_settings', {})
 $nova_auth_ip=hiera('management_vip')
 
 $net_partition_name = $settings['nuage_net_partition_name']
